@@ -3,20 +3,20 @@ import DataTable from "react-data-table-component";
 
 const Ex01 = () => {
     
-    const columns = [
-        {
-            name: "Nome",
-            selector: row => row.nome
-        },
-        {
-            name: "Descrição",
-            selector: row => row.descricao
-        },
-        {
-            name: "Preço",
-            selector: row => row.preco
-        }
-    ];
+    // const columns = [
+    //     {
+    //         name: "Nome",
+    //         selector: row => row.nome
+    //     },
+    //     {
+    //         name: "Descrição",
+    //         selector: row => row.descricao
+    //     },
+    //     {
+    //         name: "Preço",
+    //         selector: row => row.preco
+    //     }
+    // ];
 
     const produtos = new Array(10).fill().map((value) => {
         let produto = new Object();
@@ -33,7 +33,18 @@ const Ex01 = () => {
 
     return (
         <div>
-            <DataTable title="Produtos" columns={columns} data={produtos} />
+            <h1 style={{textAlign: "center"}}>Produtos</h1>
+            <ul className="produtoList">
+                {produtos.map((produto) => {
+                    return (
+                        <li key={produto.id} className="produtoListItem">
+                            <h2>{produto.nome}</h2>
+                            <p>{produto.descricao}</p>
+                            <p>R${produto.preco}</p>
+                        </li>
+                    );
+                })}
+            </ul>
         </div>
     );
 }
